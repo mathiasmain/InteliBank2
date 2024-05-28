@@ -9,7 +9,7 @@ public class Login extends JFrame{
     private JPanel JP_Login;
 
 
-    public Login()
+    public Login(Batadase foo)
     {
         setContentPane(JP_Login);
         setTitle("Login Page");
@@ -28,7 +28,7 @@ public class Login extends JFrame{
                         email.contains(String.valueOf('@')))
                 {
 
-                    SQLQuerries.SQLogin();
+                    if(SQlogin(foo, TFEmail.getText(), TFPass.getText()))
                     // LoginPass Lp = new LoginPass();
                 }
                 else

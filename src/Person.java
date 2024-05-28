@@ -20,10 +20,20 @@ public class Person implements IUser
 
     // Construtores
 
-    // P/ Login e ler da BD.
-    public Person(int ID_account, String user_type, String first_name, String psw, int account_number, double balance)
+    // LENDO DA DB
+    public Person(int ID_account, String user_type, String first_name,String last_name,String birthday, String email, String psw, int account_number, double balance, String start_date, String status)
     {
-
+        this.ID_account = ID_account;
+        this.user_type = EUser.valueOf(user_type);
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.birth_date = LocalDate.parse(birthday, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.email = email;
+        this.psw = psw;
+        this.account_number = account_number;
+        this.balance = balance;
+        setStringStart_date(start_date);
+        this.Status = Status;
     }
 
     // P/ Novo usuário.
@@ -108,7 +118,10 @@ public class Person implements IUser
     public void setBalance() {
         this.balance = 0.0f;
     }
-
+    public void setStringStart_date(String start_date)
+    {
+        this.start_date = LocalDate.parse(start_date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
     public void setStart_date() {
         try {
             this.start_date = LocalDate.now();

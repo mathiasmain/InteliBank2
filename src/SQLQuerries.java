@@ -26,7 +26,7 @@ public class SQLQuerries {
         }
     }
 
-    public Boolean SQLoginEmail(Batadase b, String email, String Password)
+    public Boolean SQLogin(Batadase b, String email, String Password)
     {
         String sql = "SELECT COUNT(*) FROM IB_DB.Persons WHERE email = ?;";
         Boolean result = false;
@@ -61,6 +61,7 @@ public class SQLQuerries {
 // ------------------------------------------------------------------------------------------------------------------
       if(result)
       {
+          Person p;
           String sql2 = "SELECT * FROM IB_DB.Person WHERE email = ?";
           int i = 0;
           try
@@ -72,8 +73,15 @@ public class SQLQuerries {
 
               while(rs.next())
               {
-                Person p = new Person(rs.getInt("id_account"), rs.getString("user_type"),
-                        rs.getString("first_name"), rs.getString("last_name"), rs.getString("birth_date")
+                p = new Person(rs.getInt("id_account"), rs.getString("user_type"),
+                        rs.getString("first_name"), rs.getString("last_name"),
+                        rs.getString("birth_date"), rs.getString("email"), rs.getString("password"),
+                        rs.getInt("account_number"), rs.getDouble("balance"), rs.getString("start_date"),
+                        rs.getString("status"));
+              }
+              if(p.getPsw().equals(Password))
+              {
+                  return true;
               }
           }
           catch( Exception e )
@@ -85,7 +93,6 @@ public class SQLQuerries {
               b.CloseConn();
           }
       }
-
 
     }
 
