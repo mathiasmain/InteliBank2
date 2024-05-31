@@ -2,7 +2,7 @@
 Este é um projeto da minha faculdade (OOP) em que implemento um banco simples. Está em desenvolvimento, como se pode perceber.
 
 ### Person
-Classe para caracterizar todos os clientes. Que implementa um IUser, para se aproveitar do enum EUser, aonde 
+Classe para caracterizar todos os clientes. Que implementa um IUser, para se aproveitar do enum EUser, aonde o usuário é dividido entre cliente e administrador, além disso, há um métodos getType que retornao tipo daquele usuário.
 
 ### DataOperation
 Classe que outras duas( transfer e Loan) herdarão desta, já que tem coneúdos praticamente idênticos. Esta classe se utiliza de um ENUM (ETransactions) para definir o tipo se é uma transferência ou um empréstimo, que futuramente poderá introduzir outros tipos.
