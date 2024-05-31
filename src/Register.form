@@ -97,7 +97,7 @@
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Glance"/>
+              <text value="Ver senha"/>
             </properties>
           </component>
           <component id="a0764" class="javax.swing.JLabel">
@@ -138,7 +138,7 @@
               <text value="Clear"/>
             </properties>
           </component>
-          <component id="a768f" class="javax.swing.JPasswordField" binding="RegisterPass2">
+          <component id="a768f" class="javax.swing.JPasswordField" binding="Register_Pass2">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -167,7 +167,7 @@
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="There isn't hashing or salting to the passwords!"/>
+              <text value="Não há hashing ou salting nas senhas!"/>
             </properties>
           </component>
           <component id="36728" class="javax.swing.JLabel">
@@ -175,7 +175,7 @@
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="So just use fake ones!"/>
+              <text value="Então, só use uma aleatória."/>
             </properties>
           </component>
         </children>

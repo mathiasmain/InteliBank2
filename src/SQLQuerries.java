@@ -26,8 +26,9 @@ public class SQLQuerries {
         }
     }
 
-    public Boolean SQLogin(Batadase b, String email, String Password)
+    public static Person SQLogin(Batadase b, String email, String Password)
     {
+        Person p = null;
         String sql = "SELECT COUNT(*) FROM IB_DB.Persons WHERE email = ?;";
         Boolean result = false;
         try
@@ -45,14 +46,14 @@ public class SQLQuerries {
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
 
             }
         }
         catch( Exception e )
         {
-            System.err.println("Some exception when trying to login user:" +p.getFirst_Name() +"\n"+ e.getMessage());
+            System.err.println("Some exception when trying to login:" +"\n"+ e.getMessage());
         }
         finally
         {
@@ -61,39 +62,38 @@ public class SQLQuerries {
 // ------------------------------------------------------------------------------------------------------------------
       if(result)
       {
-          Person p;
           String sql2 = "SELECT * FROM IB_DB.Person WHERE email = ?";
           int i = 0;
-          try
-          {
+          try {
               b.OpenConn();
               PreparedStatement pstmt = b.conn.prepareStatement(sql);
               pstmt.setString(1, email);
               ResultSet rs = pstmt.executeQuery();
 
-              while(rs.next())
-              {
-                p = new Person(rs.getInt("id_account"), rs.getString("user_type"),
-                        rs.getString("first_name"), rs.getString("last_name"),
-                        rs.getString("birth_date"), rs.getString("email"), rs.getString("password"),
-                        rs.getInt("account_number"), rs.getDouble("balance"), rs.getString("start_date"),
-                        rs.getString("status"));
+
+              while (rs.next()) {
+                  p = new Person(rs.getInt("id_account"), rs.getString("user_type"),
+                          rs.getString("first_name"), rs.getString("last_name"),
+                          rs.getString("birth_date"), rs.getString("email"), rs.getString("password"),
+                          rs.getInt("account_number"), rs.getDouble("balance"), rs.getString("start_date"),
+                          rs.getString("status"));
               }
-              if(p.getPsw().equals(Password))
-              {
-                  return true;
+              assert p != null;
+              if (p.getPsw().equals(Password)) {
+                  return p;
               }
           }
           catch( Exception e )
           {
-              System.err.println("Some exception when trying to login user:" +p.getFirst_Name() +"\n"+ e.getMessage());
+              assert p != null;
+              System.err.println("Some exception when trying to login user :"+p.getEmail() +"\n"+ e.getMessage());
           }
           finally
           {
               b.CloseConn();
           }
       }
-
+        return null;
     }
 
 
