@@ -97,19 +97,27 @@ public class SQLQuerries {
     }
 
 
-    public void SQLTransfer(Person p, Batadase b)
+    public void SQLTransfer(Person p, Batadase b, int Account_num, double amount)
     {
-        try
-        {
+        if(p.getBalance() >= amount && amount > 0) {
+
+
             b.OpenConn();
+            try {
+
+
+
+                // Checa se o número de conta existe, e edita o valor de amount do outro usuário.
+                // Subtrair e salvar quantia x do usuário.
+            } catch (Exception e) {
+                System.err.println("Some exception when " + p.getFirst_Name() + " was trying to make a transfer:\n" + e.getMessage());
+            } finally {
+                b.CloseConn();
+            }
         }
-        catch( Exception e )
+        else
         {
-            System.err.println("Some exception when " +p.getFirst_Name() +" was trying to make a transfer:\n"+ e.getMessage());
-        }
-        finally
-        {
-            b.CloseConn();
+
         }
     }
 

@@ -9,4 +9,12 @@ public enum EUser {
             return "Client";
         }
     }
+    public static EUser toEnumUser(String user)
+    {
+        return switch (user) {
+            case "ADMIN" -> EUser.ADMIN;
+            case "CLIENT" -> EUser.CLIENT;
+            default -> null;
+        };
+    }
 }
